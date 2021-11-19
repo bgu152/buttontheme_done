@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Header from './Header';
+
+import ThemeContext from './ThemeContext';
 
 export const buttonThemes = {
   blue: {
@@ -13,8 +15,14 @@ export const buttonThemes = {
 };
 
 function App() {
+  const [theme, setTheme] = useState({});
+  useEffect(()=>
+  setTheme(buttonThemes)
+  ,[])
   return (
-    <Header />
+    <ThemeContext.Provider value={theme}>
+      <Header/>
+    </ThemeContext.Provider>
   );
 }
 
